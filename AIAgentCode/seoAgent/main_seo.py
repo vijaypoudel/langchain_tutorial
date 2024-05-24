@@ -1,12 +1,15 @@
 import os
 from constant import openai_key
+from constant import rapid_api_key
 from openai import OpenAI
-from action import get_response_time
-from prompts import system_prompt
+from actions import get_seo_page_report
+from prompts import react_system_prompt
 from json_helpers import extract_json
 
 import streamlit as st
 os.environ["OPENAI_API_KEY"]= openai_key
+os.environ["RAPID_API_KEY"]= rapid_api_key
+
 
 openai_client = OpenAI(api_key=openai_key)
 
@@ -23,13 +26,13 @@ def generate_text_with_conversation(
 #Available actions are:
 
 available_actions = {
-    "get_response_time" : get_response_time
+    "get_seo_page_report": get_seo_page_report
 }
 
-user_prompt = "what is the response time of google.com"
+user_prompt = "what is the response time of https://learnwithhasan.com"
 
 messages = [
-    {"role" : "system", "content": system_prompt},
+    {"role" : "system", "content": react_system_prompt},
     {"role" : "user" , "content" : user_prompt}
 ]
 
@@ -52,5 +55,6 @@ while think_loop <= 5:
         function_result_message = f"Action_Response: {result}"
         messages.append({"role": "user", "content": function_result_message})
         print(function_result_message)
+        print("end of loop")
     else:
          break
