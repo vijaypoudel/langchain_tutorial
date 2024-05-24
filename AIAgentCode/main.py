@@ -10,7 +10,6 @@ os.environ["OPENAI_API_KEY"]= openai_key
 
 openai_client = OpenAI(api_key=openai_key)
 
-
 def generate_text_with_conversation(
         messages,
         model="gpt-3.5-turbo"
