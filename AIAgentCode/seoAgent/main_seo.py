@@ -29,7 +29,7 @@ available_actions = {
     "get_seo_page_report": get_seo_page_report
 }
 
-user_prompt = "what is the response time of https://learnwithhasan.com"
+user_prompt = "is the heading optimized for the keyword ""marketing"" in this web page: https://vijaypoudel.coach"
 
 messages = [
     {"role" : "system", "content": react_system_prompt},
@@ -42,7 +42,6 @@ while think_loop <= 5:
     response = generate_text_with_conversation(messages,"gpt-4")
     print("printing response" , response)
     json_function  = extract_json(response)
-    print("hello")
     if json_function:
         function_name = json_function[0]['function_name']
         function_parms = json_function[0]['function_parms']
