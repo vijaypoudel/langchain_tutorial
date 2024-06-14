@@ -4,3 +4,10 @@ streamlit
 langchain_community
 langchain_openai
 SimplerLLM
+Flask
+transformers
+torch
+textblob
+chromadb
+pypdf
+pytest
